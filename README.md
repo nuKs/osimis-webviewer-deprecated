@@ -7,7 +7,8 @@ repository — the viewer has since been deprecated in favour of the Stone Web V
 `thibault-piront` branch points instead at the last commit authored by Thibault Piront
 (`6450846`, 29 August 2017).
 
-The original project README is kept below this document.
+The original project README is preserved unchanged as
+[`README.original.md`](README.original.md).
 
 ## Summary
 
@@ -27,14 +28,10 @@ That file was never kept up to date. It names only the author of the original Or
 and the lead developer, and omits the rest of the team — in particular the project's designer,
 Jérémy Evrard ([see below](#a-credit-missing-from-authors)).
 
-Between 1 December 2015 and 29 August 2017 he authored **1,384 commits** in this repository —
-by a wide margin the largest contribution — covering the initial application, the frontend
-architecture, the C++ image-processing backend, the build and CI chain, and the project's
-formal development procedures.
-
 ## Contribution volume
 
-Commits are spread across four Git identities used over the period:
+Thibault Piront was active on the project from **1 December 2015 to 29 August 2017**, and
+authored **1,384 commits** across four Git identities used over that period:
 
 | Git identity | Commits |
 |---|---|
@@ -44,9 +41,33 @@ Commits are spread across four Git identities used over the period:
 | `Thibault Piront nuKs <gse.nuks@gmail.com>` | 41 |
 | **Total** | **1,384** (1,218 excluding merges) |
 
-For scale, the repository holds 2,576 commits reachable from all refs. The next largest
-contributors are Alain Mazy (~722 across his identities), Sébastien Jodogne (~240) and
-Jérémy Evrard (89).
+### Share of the work
+
+The repository spans February 2015 to January 2024 and holds 2,576 commits. Measured against
+that whole lifetime, and against his own active period:
+
+| Scope | His commits | Total | Share |
+|---|---|---|---|
+| Whole repository lifetime (2015–2024) | 1,384 | 2,576 | **53.7 %** |
+| His active period (Dec. 2015 – Aug. 2017) | 1,382 | 1,834 | **75.4 %** |
+| Same period, excluding the Jenkins CI bot | 1,382 | 1,721 | **80.3 %** |
+| Same period, commits touching `frontend/` | 413 | 457 | **90.4 %** |
+| Same period, commits touching `backend/` | 121 | 153 | **79.1 %** |
+
+The whole-lifetime figure is diluted by six and a half years of maintenance after he left. The
+period figures are the meaningful ones, and they should be read with what the remainder
+consists of: in that window the only other substantial contributor is Alain Mazy (248 commits),
+whose work concentrates on build and release infrastructure — `Jenkinsfile/`, the Windows and
+macOS build scripts, Docker — on the vendored Boost dependencies, and on parts of the backend
+library. Sébastien Jodogne (39), Thibault Nélis (18) and Jérémy Evrard (33) account for the
+rest.
+
+So the honest summary is: roughly four commits in five during his tenure, and around nine in
+ten of the frontend application itself. The `frontend/` and `backend/` figures start from the
+July 2016 commit that split JavaScript and C++ into separate directories.
+
+The next largest contributors over the repository's whole lifetime are Alain Mazy (~722 across
+his identities), Sébastien Jodogne (~240) and Jérémy Evrard (89).
 
 The repository itself predates this work — its root commit is `8fddb97` (25 February 2015,
 Sébastien Jodogne, *"initial commit"*), the original Orthanc Web Viewer plugin — but the Osimis
@@ -279,173 +300,85 @@ floor on Jérémy Evrard's involvement, not a measure of it.
 
 ## What this repository does *not* establish
 
-A prior research pass surfaced a number of downstream uses of the viewer and of the
-closed-source Web Viewer Pro. **None of it is verifiable from this repository, and the source
-links did not survive the export of that research.** It is recorded here as leads to
-re-verify, not as established fact:
+Beyond the code, the viewer had a life as a component inside other people's products, and the
+closed-source Web Viewer Pro sat directly on top of it. None of that is verifiable from this
+repository. The sources below come from an earlier research pass; each link has been recovered
+and is given here so the claim can be checked rather than taken on trust.
 
-- **Web Viewer Pro / CE-marked medical device** — closed source; the public repository proves
-  the *interface* to it (procedures, `WVP` ticket prefixes, LiveShare seams), not its content.
-- **OpenApp / CPMS** — the European Commission's Clinical Patient Management System for
-  European Reference Networks, reportedly updating "Osimis Viewer plug-ins" in its 2018
-  release notes.
-- **ISB Cancer Genomics Cloud** — reportedly offering an "Open in Osimis Web Viewer" action.
-- **GNU Health, bitServer, SIMGOS, mLITE, "L2", PAN Enterprise, BMC2 (University of Michigan
-  cardiology consortium), Biotron S.p.A. (veterinary), eSanjeevani (India, shortlisted)** —
-  reported third-party integrations, most of them following the same
-  `osimis-viewer/app/index.html?study=<id>` entry point.
-- **A racehorse/thoroughbred veterinary client (late 2016) and a South African client** —
-  recalled but never named; no public identification was found.
+Two of them were re-verified while writing this document and are marked accordingly. The rest
+are cited as-found and still need checking.
 
-Anyone continuing this work should treat the list above as a search agenda. The useful search
-vocabulary for the equine lead is *racehorse / thoroughbred / bloodstock / yearling /
-pre-purchase X-rays*, which is far more discriminating than "veterinary".
+### The Pro version and the medical-device context
+
+| Claim | Source |
+|---|---|
+| Osimis Pro Web Viewer — official *Instructions for Use*, hosted by ERKNet | [erknet.org — Image_viewer.pdf](https://www.erknet.org/fileadmin/files/user_upload/Image_viewer.pdf) |
+| The Osimis Web Viewer itself is **not** a medical device, not CE marked, not for diagnostic use ✅ | [Orthanc Book — Osimis Web viewer plugin (deprecated)](https://orthanc.uclouvain.be/book/plugins/osimis-webviewer.html) |
+| Sébastien Jodogne on the Pro version sharing nearly all its code with the free one (2023) | [Orthanc Users — Stone Web Viewer, open source projects in the clinical environment](https://discourse.orthanc-server.org/t/stone-web-viewer-open-source-projects-in-the-clinical-environment/3676) |
+| Basic vs Pro described publicly in 2017 (CE marking + LiveShare) | [orthanc-users — BQBGGbzVMfY](https://groups.google.com/g/orthanc-users/c/BQBGGbzVMfY) |
+| Stone Web Viewer as the later, genuinely different replacement | [Orthanc Book — Stone Web viewer](https://orthanc.uclouvain.be/book/plugins/stone-webviewer.html) |
+
+### Third-party integrations
+
+| Integrator | Source |
+|---|---|
+| **OpenApp / CPMS** — European Commission, rare diseases. Release note, CPMS Version 2, 18 January 2018: *"Update Osimis Viewer plug-ins in CPMS in line with the latest release of Osimis viewer"* ✅ | [EpiCARE — CPMS release notes](https://epi-care.eu/clinical-patient-management-system-cpms-live-12pm-cet-20th-november-2017/) · [OpenApp case study](https://www.openapp.ie/clinical-patient-management-system-for-european-reference-networks-a-case-study/) · [European Commission — Work of the ERNs](https://health.ec.europa.eu/rare-diseases-and-european-reference-networks/european-reference-networks/work-erns_en) |
+| **ISB Cancer Genomics Cloud** — "Open in Osimis Web Viewer" from a cancer cohort | [ISB-CGC docs — Saved Cohorts](https://isb-cgc-readthedocs.readthedocs.io/en/latest/sections/webapp/Saved-Cohorts.html) |
+| **BMC2** — Blue Cross Blue Shield of Michigan Cardiovascular Consortium | [bmc2.org — PCI registry](https://bmc2.org/about/what-we-do/pci) |
+| **PAN Enterprise** — patient portal still listing an "Osimis Image" column | [pultratt.panenterprise.com](https://pultratt.panenterprise.com/patient_portal_examination) |
+| **Biotron S.p.A.** — veterinary use, Norberg angle on dog radiographs (2019) | [Orthanc Users — Osimis viewer tool for vet](https://discourse.orthanc-server.org/t/osimis-viewer-tool-for-vet/1260) |
+| **eSanjeevani** — Indian national telemedicine service; the viewer shortlisted in an evaluation | [Journal of the ISfTeH (UKZN)](https://journals.ukzn.ac.za/index.php/JISfTeH/article/download/162/html?inline=1) |
+| **AI → PACS workflow** — the viewer as the inspection layer of an experimental pipeline | [Radiology: Artificial Intelligence 10.1148/ryai.2021200105](https://pubs.rsna.org/doi/10.1148/ryai.2021200105) |
+| **Research imaging** — reviews performed with the viewer | [PMC7728946](https://pmc.ncbi.nlm.nih.gov/articles/PMC7728946/) · [PMC12557960](https://pmc.ncbi.nlm.nih.gov/articles/PMC12557960/) |
+| **Distributed as an Orthanc building block** for software integrators | [orthanc-setup-samples](https://github.com/orthanc-server/orthanc-setup-samples/) · [Adeo Clouds](https://www.adeoclouds.eu/product.php?id=8) |
+| **Unnamed EMR** — exporting annotated key images to a main EMR application | [Orthanc Users — save annotations to a new DICOM file](https://discourse.orthanc-server.org/t/save-annotations-to-a-new-dicom-file-webviewer-keyimagecapture/2881) |
+| **Unnamed commercial iframe embedding** | [orthanc-users — n45sVSORXqM](https://groups.google.com/g/orthanc-users/c/n45sVSORXqM) |
+
+The earlier research also listed **GNU Health, bitServer, SIMGOS, mLITE and the Russian "L2"
+system** as source-code-level integrations, most of them building the same
+`osimis-viewer/app/index.html?study=<id>` entry point. Those were reported without citations
+and no link survives for them — they are the weakest items here and need finding from scratch.
+
+### Public traces of the role
+
+| Claim | Source |
+|---|---|
+| Presenting himself as the main developer of the Osimis Viewer, May 2016 | [Orthanc Users — Web Viewer](https://discourse.orthanc-server.org/t/web-viewer/397) · [orthanc-users — KPoIBLcc3Ng](https://groups.google.com/g/orthanc-users/c/KPoIBLcc3Ng) |
+| Pointing users at the `toolbar/`, `viewport/image-plugins/` and `viewport/series-plugins/` extension points | [orthanc-users — TWh4gLVAqrc](https://groups.google.com/g/orthanc-users/c/TWh4gLVAqrc) · [orthanc-users — _i2AwYkT2kw](https://groups.google.com/g/orthanc-users/c/_i2AwYkT2kw) |
+| Osimis pitch deck naming Jérémy Evrard and Thibault Piront as the developers | [SlideShare — Osimis pitch](https://www.slideshare.net/slideshow/osimis-pitch/58265421) |
+| Veterinary-specific DICOM tags being worked on at Osimis, 5 December 2016 | [orthanc-users — IQNy0VEq0wY](https://groups.google.com/g/orthanc-users/c/IQNy0VEq0wY) |
+| "Fifty Shades of Orthanc" (Frédéric Lambrechts, 2016) — announced a tour of Osimis implementations | [fredlambrechts.bitbucket.io](https://fredlambrechts.bitbucket.io/) |
+
+### Still unidentified
+
+- **A racehorse / thoroughbred veterinary client, active late 2016.** The strongest trace is
+  the Orthanc thread above about veterinary DICOM tags. Candidates checked and set aside:
+  [ARQANA](https://www.thoroughbreddailynews.com/arqana-to-establish-repository/) (used
+  Asteris Keystone), [Eclipse Veterinary Software](https://www.eclipsesoftware.info/veterinary/)
+  (own webPACS), [Equine MediRecord](https://www.rte.ie/news/business/2022/0804/1313813-equine-medirecord-secures-10m-investment-from-us-firm/)
+  (medication records, not imaging). Useful search vocabulary: *racehorse / thoroughbred /
+  bloodstock / yearling / pre-purchase X-rays* — far more discriminating than "veterinary".
+  Background on the workflow: [EVA Blue Book](https://www.imags.com.au/EVA_Final_Blue_Book/116/).
+- **A South African client, reportedly with a lawyer as CEO.** No solid match.
+  [CloudSound](https://www.cloudsound.ai/) was considered and discarded — no public Orthanc or
+  Osimis trace.
 
 ## Sources
 
-The primary source for everything in the preceding sections is **this repository itself** —
-its Git history, file headers and documentation. Every commit hash, quotation, file path and
-count above was checked directly against it.
+The primary source for everything before the section above is **this repository itself** — its
+Git history, file headers and documentation. Every commit hash, quotation, file path and count
+was checked directly against it.
 
-The unverified section derives from an earlier research conversation exported to PDF; that
-export did not preserve its source URLs.
+The external claims come from an earlier research conversation, exported to PDF. That export
+shows only citation labels on screen, but the underlying URLs survive as PDF link annotations;
+they were extracted from the file and are reproduced above.
+
+Upstream repository: [orthanc-team/osimis-webviewer-deprecated](https://github.com/orthanc-team/osimis-webviewer-deprecated).
 
 ## Methodology
 
 This document was compiled by an AI. All figures and quotations in the verified sections were
 re-derived from the repository on 15 August 2026 rather than carried over from the earlier
 research, and several dates in that research were corrected in the process. Claims that could
-not be checked against the repository are confined to the section above that says so.
-
----
-
-# Osimis Web Viewer
-
-The [Osimis'](htpp://www.osimis.io/) Web Viewer provides medical image 
-visualization straight from the browser.
-
-It is distributed as a plugin to [Orthanc](http://www.orthanc-server.com/). In 
-other words, the viewer can be connected to most modalities, but also leveraged
-through Orthanc's strong architectural extensibility.
-
-2D rendering is supported with the usual tools:
-
-- Zooming
-- Panning
-- Windowing
-- Length Measurement
-- Angle Measurement
-- Point/Circle/Rectangle of Interest
-- Image Flipping/Rotation
-- Multiframe support
-
-Have a look at [our blog](http://www.osimis.io/en/blog.html).
-
-## Demo
-
-A demo of the viewer is available at those links:
-
-- [IRM study](http://osimisviewer.osimis.io/osimis-viewer/app/index.html?study=1b4c72ad-5aba2557-9fc396b3-323e190c-07d36585).
-- [Full demo](http://osimisviewer.osimis.io/), embedded within the Orthanc
-  Explorer. Other studies are available from there.
-
-## What's new
-
-See the [release notes](https://bitbucket.org/osimis/osimis-webviewer-plugin/src/master/RELEASE_NOTES.txt).
-
-## Installation & Usage
-
-The latest stable version is available [here](http://www.osimis.io/en/download.html).
-
-Nightly builds are available [here](http://orthanc.osimis.io/#/nightly).
-They are still unstable at the moment.
-
-We recommend to download the binaries for Windows and Mac OS X & the docker
-image for Linux.
-
-[This article](http://www.osimis.io/en/blog/2016/06/03/deploy-Orthanc-on-a-PC-in-38-seconds.html)
-details the installation process on Windows.
-
-[This procedure](https://osimis.atlassian.net/wiki/spaces/OKB/pages/26738689/How+to+use+osimis+orthanc+Docker+images#Howtouseosimis/orthancDockerimages?-Quickstart) explains how to use the
-docker image on Linux.
-
-For Mac OS X, the procedure is very similar to the windows' one. Unzip the
-downloaded folder and double click on the `startOrthanc.command` file.
-
-## Configuration
-
-Orthanc is configurable via a [JSON file](https://orthanc.chu.ulg.ac.be/book/users/configuration.html).
-This plugin provide a few optional options as well.  Check [this page](https://osimis.atlassian.net/wiki/spaces/OKB/pages/10321921/Osimis+Web+Viewer+-+Configuration+file) for a full list.
-
-
-## Licensing
-
-The Osimis' Web Viewer is licensed under the AGPL license. See the COPYING
-file.
-We also kindly ask scientific works and clinical studies that make use of
-Orthanc to cite Orthanc in their associated publications. Similarly, we ask
-open-source and closed-source products that make use of Orthanc to warn us
-about this use. You can cite S. Jodogne's work using the following BibTeX
-entry:
-
-```
-@inproceedings{Jodogne:ISBI2013,
-author = {Jodogne, S. and Bernard, C. and Devillers, M. and Lenaerts, E. and Coucke, P.},
-title = {Orthanc -- {A} Lightweight, {REST}ful {DICOM} Server for Healthcare and Medical Research},
-booktitle={Biomedical Imaging ({ISBI}), {IEEE} 10th International Symposium on}, 
-year={2013}, 
-pages={190-193}, 
-ISSN={1945-7928},
-month=apr,
-url={http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=6556444},
-address={San Francisco, {CA}, {USA}}
-}
-```
-
-## Contact & Bug/Feedback Report
-
-Any question/feedback/bug report are well appreciated. You may report them on the [Orthanc Users Group](https://groups.google.com/forum/#!forum/orthanc-users).
-
-The full bug/feedback report procedure is available in the 
-`procedures/report-bug-or-feedback.md` file.
-
-## Authentification Proxy Development & Plugin's routes
-
-See the `procedures/develop-auth-proxy.md` file.
-
-## Development
-
-### Folder structure
-
-Six folders are available at the root:
-
-- `backend/` contains the C++ plugin source code (& cmake build process).
-- `frontend/` contains the HTML/JavaScript source code (& gulp build process).
-- `reverse-proxy/` contains a reverse proxy suitable for development.
-- `demo/` contains a standalone docker, proxied version of orthanc and the
-  viewer with sample files.
-- `scripts/` contains global demo building scripts, it is mostly used by the
-  Continuous Integration System. It also contains scripts to build/run the web
-  viewer demo in a docker environment.
-- `tests/` contains the integration tests.
-
-### Build
-
-See the `procedures/bootstrap-dev-environment.md` file.
-
-### Development
-
-See the `procedures/bootstrap-dev-environment.md` file.
-
-### Testing
-
-See the `procedures/run-tests.md` file.
-
-### Release procedure
-
-See the `procedures/release-version.md` file. The
-`procedures/archive-test-reports.md` file will be mentionned.
-
-### Pulling changes back from orthanc-webviewer-plugin
-
-See the `procedures/merge-orthancwebviewer.md` file.
+not be checked against the repository are confined to the section that says so, each with its
+source; the two marked ✅ were additionally re-fetched and confirmed verbatim.

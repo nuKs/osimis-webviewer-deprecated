@@ -7,8 +7,8 @@ dépôt — le viewer a depuis été abandonné au profit du Stone Web Viewer. L
 `thibault-piront` pointe, elle, sur le dernier commit signé par Thibault Piront
 (`6450846`, 29 août 2017).
 
-Le README original du projet est conservé à la suite du document anglais, dans
-[`README.md`](README.md).
+Le README original du projet est conservé tel quel dans
+[`README.original.md`](README.original.md).
 
 ## Synthèse
 
@@ -29,14 +29,10 @@ Ce fichier n'a jamais été tenu à jour. Il ne nomme que l'auteur du plugin Ort
 le lead developer, et omet le reste de l'équipe — en particulier le designer du projet,
 Jérémy Evrard ([voir plus bas](#un-crédit-manquant-dans-authors)).
 
-Entre le 1er décembre 2015 et le 29 août 2017, il a signé **1 384 commits** dans ce dépôt —
-de très loin la contribution la plus importante — couvrant l'application initiale,
-l'architecture frontend, le backend C++ de traitement d'images, la chaîne de build et de CI,
-ainsi que les procédures formelles de développement du projet.
-
 ## Volume de contribution
 
-Les commits se répartissent sur quatre identités Git utilisées au cours de la période :
+Thibault Piront a été actif sur le projet du **1er décembre 2015 au 29 août 2017**, et y a
+signé **1 384 commits**, répartis sur quatre identités Git utilisées au cours de la période :
 
 | Identité Git | Commits |
 |---|---|
@@ -46,9 +42,33 @@ Les commits se répartissent sur quatre identités Git utilisées au cours de la
 | `Thibault Piront nuKs <gse.nuks@gmail.com>` | 41 |
 | **Total** | **1 384** (1 218 hors merges) |
 
-À titre de comparaison, le dépôt compte 2 576 commits accessibles depuis l'ensemble des refs.
-Les contributeurs suivants sont Alain Mazy (~722 toutes identités confondues), Sébastien
-Jodogne (~240) et Jérémy Evrard (89).
+### Part du travail
+
+Le dépôt s'étend de février 2015 à janvier 2024 et compte 2 576 commits. Rapportée à cette
+durée totale, puis à sa propre période d'activité :
+
+| Périmètre | Ses commits | Total | Part |
+|---|---|---|---|
+| Durée totale du dépôt (2015–2024) | 1 384 | 2 576 | **53,7 %** |
+| Sa période d'activité (déc. 2015 – août 2017) | 1 382 | 1 834 | **75,4 %** |
+| Même période, hors bot de CI Jenkins | 1 382 | 1 721 | **80,3 %** |
+| Même période, commits touchant `frontend/` | 413 | 457 | **90,4 %** |
+| Même période, commits touchant `backend/` | 121 | 153 | **79,1 %** |
+
+Le chiffre sur la durée totale est dilué par six ans et demi de maintenance postérieure à son
+départ. Ce sont les chiffres de la période qui comptent, et il faut les lire en sachant de quoi
+le reste est fait : sur cette fenêtre, le seul autre contributeur substantiel est Alain Mazy
+(248 commits), dont le travail se concentre sur l'infrastructure de build et de release —
+`Jenkinsfile/`, les scripts de build Windows et macOS, Docker —, sur les dépendances Boost
+embarquées et sur des parties de la bibliothèque backend. Sébastien Jodogne (39), Thibault
+Nélis (18) et Jérémy Evrard (33) constituent le solde.
+
+Le résumé honnête est donc : environ quatre commits sur cinq pendant sa présence, et près de
+neuf sur dix de l'application frontend elle-même. Les chiffres `frontend/` et `backend/` ne
+partent que du commit de juillet 2016 qui a séparé le JavaScript et le C++ en deux répertoires.
+
+Sur la durée totale du dépôt, les contributeurs suivants sont Alain Mazy (~722 toutes identités
+confondues), Sébastien Jodogne (~240) et Jérémy Evrard (89).
 
 Le dépôt lui-même est antérieur à ce travail — son commit racine est `8fddb97`
 (25 février 2015, Sébastien Jodogne, *« initial commit »*), le plugin Orthanc Web Viewer
@@ -288,41 +308,89 @@ Evrard, pas une mesure de celle-ci.
 
 ## Ce que ce dépôt n'établit *pas*
 
-Une recherche antérieure avait fait ressortir plusieurs réutilisations du viewer en aval, ainsi
-que le Web Viewer Pro closed source. **Rien de tout cela n'est vérifiable depuis ce dépôt, et
-les liens sources n'ont pas survécu à l'export de cette recherche.** Ces éléments sont
-consignés ici comme pistes à revérifier, pas comme faits établis :
+Au-delà du code, le viewer a eu une vie de composant à l'intérieur des produits d'autres
+équipes, et le Web Viewer Pro closed source reposait directement dessus. Rien de tout cela
+n'est vérifiable depuis ce dépôt. Les sources ci-dessous proviennent d'une recherche
+antérieure ; chaque lien a été récupéré et est donné ici pour que l'affirmation puisse être
+vérifiée plutôt que crue sur parole.
 
-- **Web Viewer Pro / dispositif médical marqué CE** — closed source ; le dépôt public prouve
-  l'*interface* avec lui (procédures, préfixes de tickets `WVP`, coutures LiveShare), pas son
-  contenu.
-- **OpenApp / CPMS** — le Clinical Patient Management System de la Commission européenne pour
-  les European Reference Networks, dont les release notes de 2018 mentionneraient la mise à
-  jour des « Osimis Viewer plug-ins ».
-- **ISB Cancer Genomics Cloud** — proposerait une action « Open in Osimis Web Viewer ».
-- **GNU Health, bitServer, SIMGOS, mLITE, « L2 », PAN Enterprise, BMC2 (consortium de
-  cardiologie de l'université du Michigan), Biotron S.p.A. (vétérinaire), eSanjeevani (Inde,
-  présélectionné)** — intégrations tierces rapportées, la plupart suivant le même point
-  d'entrée `osimis-viewer/app/index.html?study=<id>`.
-- **Un client vétérinaire spécialisé chevaux de course (fin 2016) et un client sud-africain** —
-  évoqués de mémoire mais jamais nommés ; aucune identification publique n'a été trouvée.
+Deux d'entre elles ont été revérifiées à la rédaction de ce document et sont marquées comme
+telles. Les autres sont citées en l'état et restent à contrôler.
 
-Quiconque poursuivra ce travail devrait traiter cette liste comme un programme de recherche.
-Pour la piste équine, le vocabulaire utile est *racehorse / thoroughbred / bloodstock /
-yearling / pre-purchase X-rays*, nettement plus discriminant que « veterinary ».
+### La version Pro et le contexte dispositif médical
+
+| Affirmation | Source |
+|---|---|
+| Osimis Pro Web Viewer — *Instructions for Use* officielles, hébergées par ERKNet | [erknet.org — Image_viewer.pdf](https://www.erknet.org/fileadmin/files/user_upload/Image_viewer.pdf) |
+| L'Osimis Web Viewer lui-même n'est **pas** un dispositif médical, ni marqué CE, ni destiné au diagnostic ✅ | [Orthanc Book — Osimis Web viewer plugin (deprecated)](https://orthanc.uclouvain.be/book/plugins/osimis-webviewer.html) |
+| Sébastien Jodogne sur la version Pro partageant presque tout son code avec la version libre (2023) | [Orthanc Users — Stone Web Viewer, open source projects in the clinical environment](https://discourse.orthanc-server.org/t/stone-web-viewer-open-source-projects-in-the-clinical-environment/3676) |
+| Différence Basic / Pro décrite publiquement en 2017 (marquage CE + LiveShare) | [orthanc-users — BQBGGbzVMfY](https://groups.google.com/g/orthanc-users/c/BQBGGbzVMfY) |
+| Le Stone Web Viewer comme remplaçant ultérieur, réellement différent | [Orthanc Book — Stone Web viewer](https://orthanc.uclouvain.be/book/plugins/stone-webviewer.html) |
+
+### Intégrations tierces
+
+| Intégrateur | Source |
+|---|---|
+| **OpenApp / CPMS** — Commission européenne, maladies rares. Release note, CPMS Version 2, 18 janvier 2018 : *« Update Osimis Viewer plug-ins in CPMS in line with the latest release of Osimis viewer »* ✅ | [EpiCARE — release notes CPMS](https://epi-care.eu/clinical-patient-management-system-cpms-live-12pm-cet-20th-november-2017/) · [Étude de cas OpenApp](https://www.openapp.ie/clinical-patient-management-system-for-european-reference-networks-a-case-study/) · [Commission européenne — Work of the ERNs](https://health.ec.europa.eu/rare-diseases-and-european-reference-networks/european-reference-networks/work-erns_en) |
+| **ISB Cancer Genomics Cloud** — action « Open in Osimis Web Viewer » depuis une cohorte cancérologique | [Documentation ISB-CGC — Saved Cohorts](https://isb-cgc-readthedocs.readthedocs.io/en/latest/sections/webapp/Saved-Cohorts.html) |
+| **BMC2** — Blue Cross Blue Shield of Michigan Cardiovascular Consortium | [bmc2.org — registre PCI](https://bmc2.org/about/what-we-do/pci) |
+| **PAN Enterprise** — portail patient affichant encore une colonne « Osimis Image » | [pultratt.panenterprise.com](https://pultratt.panenterprise.com/patient_portal_examination) |
+| **Biotron S.p.A.** — usage vétérinaire, angle de Norberg sur radiographies de chiens (2019) | [Orthanc Users — Osimis viewer tool for vet](https://discourse.orthanc-server.org/t/osimis-viewer-tool-for-vet/1260) |
+| **eSanjeevani** — service national indien de télémédecine ; viewer présélectionné dans une évaluation | [Journal of the ISfTeH (UKZN)](https://journals.ukzn.ac.za/index.php/JISfTeH/article/download/162/html?inline=1) |
+| **Workflow IA → PACS** — le viewer comme couche d'inspection d'un pipeline expérimental | [Radiology: Artificial Intelligence 10.1148/ryai.2021200105](https://pubs.rsna.org/doi/10.1148/ryai.2021200105) |
+| **Imagerie de recherche** — relectures effectuées avec le viewer | [PMC7728946](https://pmc.ncbi.nlm.nih.gov/articles/PMC7728946/) · [PMC12557960](https://pmc.ncbi.nlm.nih.gov/articles/PMC12557960/) |
+| **Distribué comme brique Orthanc** pour les intégrateurs logiciels | [orthanc-setup-samples](https://github.com/orthanc-server/orthanc-setup-samples/) · [Adeo Clouds](https://www.adeoclouds.eu/product.php?id=8) |
+| **EMR non nommé** — export d'images clés annotées vers l'application EMR principale | [Orthanc Users — save annotations to a new DICOM file](https://discourse.orthanc-server.org/t/save-annotations-to-a-new-dicom-file-webviewer-keyimagecapture/2881) |
+| **Embarquement commercial en iframe, société non nommée** | [orthanc-users — n45sVSORXqM](https://groups.google.com/g/orthanc-users/c/n45sVSORXqM) |
+
+La recherche antérieure citait également **GNU Health, bitServer, SIMGOS, mLITE et le système
+russe « L2 »** comme intégrations au niveau du code source, la plupart construisant le même
+point d'entrée `osimis-viewer/app/index.html?study=<id>`. Ces éléments ont été rapportés sans
+citation et aucun lien n'a survécu pour eux : ce sont les plus fragiles de cette liste, et ils
+sont à retrouver de zéro.
+
+### Traces publiques du rôle
+
+| Affirmation | Source |
+|---|---|
+| Se présente comme le développeur principal de l'Osimis Viewer, mai 2016 | [Orthanc Users — Web Viewer](https://discourse.orthanc-server.org/t/web-viewer/397) · [orthanc-users — KPoIBLcc3Ng](https://groups.google.com/g/orthanc-users/c/KPoIBLcc3Ng) |
+| Oriente les utilisateurs vers les points d'extension `toolbar/`, `viewport/image-plugins/` et `viewport/series-plugins/` | [orthanc-users — TWh4gLVAqrc](https://groups.google.com/g/orthanc-users/c/TWh4gLVAqrc) · [orthanc-users — _i2AwYkT2kw](https://groups.google.com/g/orthanc-users/c/_i2AwYkT2kw) |
+| Pitch Osimis nommant Jérémy Evrard et Thibault Piront comme les développeurs | [SlideShare — Osimis pitch](https://www.slideshare.net/slideshow/osimis-pitch/58265421) |
+| Tags DICOM spécifiquement vétérinaires travaillés chez Osimis, 5 décembre 2016 | [orthanc-users — IQNy0VEq0wY](https://groups.google.com/g/orthanc-users/c/IQNy0VEq0wY) |
+| « Fifty Shades of Orthanc » (Frédéric Lambrechts, 2016) — annonçait un tour des implémentations Osimis | [fredlambrechts.bitbucket.io](https://fredlambrechts.bitbucket.io/) |
+
+### Toujours non identifiés
+
+- **Un client vétérinaire spécialisé chevaux de course, actif fin 2016.** La trace la plus
+  solide est le fil Orthanc ci-dessus sur les tags DICOM vétérinaires. Candidats examinés puis
+  écartés : [ARQANA](https://www.thoroughbreddailynews.com/arqana-to-establish-repository/)
+  (utilisait Asteris Keystone),
+  [Eclipse Veterinary Software](https://www.eclipsesoftware.info/veterinary/) (webPACS
+  propriétaire), [Equine MediRecord](https://www.rte.ie/news/business/2022/0804/1313813-equine-medirecord-secures-10m-investment-from-us-firm/)
+  (dossiers de traitement, pas d'imagerie). Vocabulaire de recherche utile : *racehorse /
+  thoroughbred / bloodstock / yearling / pre-purchase X-rays*, nettement plus discriminant que
+  « veterinary ». Contexte métier : [EVA Blue Book](https://www.imags.com.au/EVA_Final_Blue_Book/116/).
+- **Un client sud-africain, dont le CEO serait avocat.** Aucune correspondance solide.
+  [CloudSound](https://www.cloudsound.ai/) a été envisagé puis écarté — aucune trace publique
+  Orthanc ou Osimis.
 
 ## Sources
 
-La source principale de tout ce qui précède est **ce dépôt lui-même** : son historique Git, ses
-en-têtes de fichiers et sa documentation. Chaque empreinte de commit, citation, chemin de
-fichier et décompte ci-dessus a été vérifié directement dans le dépôt.
+La source principale de tout ce qui précède la section ci-dessus est **ce dépôt lui-même** :
+son historique Git, ses en-têtes de fichiers et sa documentation. Chaque empreinte de commit,
+citation, chemin de fichier et décompte a été vérifié directement dans le dépôt.
 
-La section non vérifiée provient d'une conversation de recherche antérieure exportée en PDF ;
-cet export n'a pas conservé les URL de ses sources.
+Les affirmations externes proviennent d'une conversation de recherche antérieure, exportée en
+PDF. Cet export n'affiche à l'écran que des libellés de citation, mais les URL sous-jacentes
+subsistent sous forme d'annotations de lien PDF ; elles en ont été extraites et sont reproduites
+ci-dessus.
+
+Dépôt amont : [orthanc-team/osimis-webviewer-deprecated](https://github.com/orthanc-team/osimis-webviewer-deprecated).
 
 ## Note méthodologique
 
 Ce document a été compilé par une IA. Tous les chiffres et citations des sections vérifiées ont
 été redérivés du dépôt le 15 août 2026 plutôt que repris de la recherche antérieure — plusieurs
 dates de celle-ci ont d'ailleurs été corrigées au passage. Les affirmations qui n'ont pas pu
-être vérifiées dans le dépôt sont confinées à la section qui l'indique.
+être vérifiées dans le dépôt sont confinées à la section qui l'indique, chacune avec sa source ;
+les deux marquées ✅ ont en outre été refetchées et confirmées mot pour mot.
