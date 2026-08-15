@@ -313,8 +313,8 @@ n'est vérifiable depuis ce dépôt. Les sources ci-dessous proviennent d'une re
 antérieure ; chaque lien a été récupéré et est donné ici pour que l'affirmation puisse être
 vérifiée plutôt que crue sur parole.
 
-Deux d'entre elles ont été revérifiées à la rédaction de ce document et sont marquées comme
-telles. Les autres sont citées en l'état et restent à contrôler.
+Celles marquées ✅ ont été refetchées et confirmées à la rédaction de ce document. Les autres
+sont citées en l'état et restent à contrôler.
 
 ### La version Pro et le contexte dispositif médical
 
@@ -341,12 +341,41 @@ telles. Les autres sont citées en l'état et restent à contrôler.
 | **Distribué comme brique Orthanc** pour les intégrateurs logiciels | [orthanc-setup-samples](https://github.com/orthanc-server/orthanc-setup-samples/) · [Adeo Clouds](https://www.adeoclouds.eu/product.php?id=8) |
 | **EMR non nommé** — export d'images clés annotées vers l'application EMR principale | [Orthanc Users — save annotations to a new DICOM file](https://discourse.orthanc-server.org/t/save-annotations-to-a-new-dicom-file-webviewer-keyimagecapture/2881) |
 | **Embarquement commercial en iframe, société non nommée** | [orthanc-users — n45sVSORXqM](https://groups.google.com/g/orthanc-users/c/n45sVSORXqM) |
+| **GNU Health** — intégration DICOM pour le système d'information hospitalier GNU Health ✅ | [Terabuck/GNUhealth-DICOM](https://github.com/Terabuck/GNUhealth-DICOM) · [README](https://github.com/Terabuck/GNUhealth-DICOM/blob/main/README.md) |
+| **bitServer** — téléradiologie et workflow de radiologues distants ; résout un accession number via `/tools/find` d'Orthanc, puis redirige vers le viewer ✅ | [LinkServlet.java](https://github.com/id-05/bitServer/blob/master/src/main/java/LinkServlet.java) · [README](https://github.com/id-05/bitServer/blob/master/README.md) |
+| **SIMGOS** — écosystème hospitalier du ministère indonésien de la Santé ; le viewer est une simple entrée de configuration `PACService` ✅ | [simgos-docker — php-fpm/local.php](https://github.com/argadhika/simgos-docker/blob/main/php-fpm/local.php) · [dépôt](https://github.com/argadhika/simgos-docker) |
+| **mLITE / SIMRS** — écran « Bridging PACS » liant les études directement au viewer, à côté d'une action *Simpan ke SIMRS* (enregistrer dans le SIH) ✅ | [Mlite — orthanc.html](https://github.com/riyanadityapradana/Mlite/blob/main/plugins/orthanc/view/admin/orthanc.html) |
+| **« L2 »** — système d'information médical russe ; construit l'URL du viewer à travers plusieurs serveurs et peers Orthanc ✅ | [api/dicom.py](https://github.com/mikhailprivalov/l2/blob/develop/api/dicom.py) · [dépôt](https://github.com/mikhailprivalov/l2) |
 
-La recherche antérieure citait également **GNU Health, bitServer, SIMGOS, mLITE et le système
-russe « L2 »** comme intégrations au niveau du code source, la plupart construisant le même
-point d'entrée `osimis-viewer/app/index.html?study=<id>`. Ces éléments ont été rapportés sans
-citation et aucun lien n'a survécu pour eux : ce sont les plus fragiles de cette liste, et ils
-sont à retrouver de zéro.
+### La couture d'intégration, dite par les autres
+
+Ces cinq derniers convergent vers une seule ligne — `osimis-viewer/app/index.html?study=<id>` —
+trouvée indépendamment par des équipes sans lien entre elles, dans des pays différents.
+bitServer résout un accession number via `/tools/find` d'Orthanc puis redirige :
+
+```java
+resp.sendRedirect("http://" + … + "/osimis-viewer/app/index.html?study=" + sid);
+```
+
+L2 fait l'équivalent à travers plusieurs serveurs et peers Orthanc ; SIMGOS le porte comme une
+unique valeur de configuration, `'viewer' => 'osimis-viewer/app/index.html'` ; mLITE y renvoie
+directement depuis son écran de pontage PACS. Aucun d'eux n'a eu besoin de forker le viewer.
+
+Le cas GNU Health est le plus utile de tous, parce qu'il dit *pourquoi* la couture a tenu. Son
+README énonce le choix sans détour :
+
+> Osimis Dicom Viewer is used here because it handles the same UUID format as Orthanc, unlike
+> the new Stone viewer that requires the 'StudyInstanceUID'.
+
+C'est un développeur extérieur qui, des années après l'abandon du projet, choisit ce viewer
+plutôt que son successeur officiel — parce que son point d'entrée se compose directement avec
+les identifiants propres d'Orthanc et n'exige aucune couche de traduction. C'est une preuve
+externe et non sollicitée de la frontière architecturale décrite plus haut dans ce document.
+
+Une réserve sur SIMGOS : le dépôt ci-dessus est un wrapper Docker présenté comme un
+environnement de développement et d'apprentissage, pas comme une distribution de production. Il
+montre que le support d'Osimis est présent dans l'écosystème SIMGOS, pas que tous les hôpitaux
+SIMGOS l'utilisaient.
 
 ### Traces publiques du rôle
 
@@ -392,4 +421,4 @@ Ce document a été compilé par une IA. Tous les chiffres et citations des sect
 été redérivés du dépôt le 15 août 2026 plutôt que repris de la recherche antérieure — plusieurs
 dates de celle-ci ont d'ailleurs été corrigées au passage. Les affirmations qui n'ont pas pu
 être vérifiées dans le dépôt sont confinées à la section qui l'indique, chacune avec sa source ;
-les deux marquées ✅ ont en outre été refetchées et confirmées mot pour mot.
+celles marquées ✅ ont en outre été refetchées et confirmées mot pour mot.
