@@ -47,9 +47,36 @@ For scale, the repository holds 2,576 commits reachable from all refs. The next 
 contributors are Alain Mazy (~722 across his identities), Sébastien Jodogne (~240) and
 Jérémy Evrard (89).
 
-The repository itself predates this work: its root commit is `8fddb97`
-(25 February 2015, Sébastien Jodogne, *"initial commit"*), the original Orthanc Web Viewer
-plugin. The Osimis application proper starts with:
+The repository itself predates this work — its root commit is `8fddb97` (25 February 2015,
+Sébastien Jodogne, *"initial commit"*), the original Orthanc Web Viewer plugin — but the Osimis
+viewer was rewritten and rearchitected from scratch, starting on day one. The continuity is in
+the Git history, not in the code.
+
+The numbers make the point. At the last pre-Osimis commit (`42ca8fc`, 27 November 2015) the
+tree held 108 files; the final tree holds 988. Exactly **two** of the original paths survive
+unmoved: `AUTHORS` and `COPYING`.
+
+What does survive, in substance, is a small C++ residue, relocated into the new backend:
+
+- `backend/WebViewerLibrary/ShortTermCache/` — the original caching subsystem (`CacheManager`,
+  `CacheScheduler`, `CacheIndex`, `ICacheFactory`, `IPrefetchPolicy`, `ViewerPrefetchPolicy`);
+- `backend/WebViewerLibrary/ViewerToolbox.{h,cpp}` and `SeriesInformationAdapter.{h,cpp}`;
+- `backend/WebViewerPlugin/Plugin.cpp` — the Orthanc plugin entry point;
+- `backend/Resources/OrthancExplorer.js` and a few CMake toolchain files.
+
+Those files still carry the dual header `Copyright (C) 2012-2016 Sebastien Jodogne` /
+`Copyright (C) 2017 Osimis`. Everything else — the whole frontend, the image and series
+pipeline, the processing policies, the configuration and routing layers, the build and CI — is
+new code.
+
+The project's own procedure, `procedures/merge-orthancwebviewer.md`, states the situation
+plainly when explaining how to pull upstream bug fixes back in:
+
+> This repository is a fork of orthanc-webviewer-plugin. […] As the directory structure and
+> most of the files have changed, professional merging tool such as sublimerge may reveal
+> helpful.
+
+The Osimis application proper starts with:
 
 - **`fade111`** — 1 December 2015 — *"chore: init app"* — first commit of the new application;
 - **`6450846`** — 29 August 2017 — *"Merged in TP-WVB-295-export-jpeg-image (pull request #62)"* —
