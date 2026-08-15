@@ -24,6 +24,10 @@ Piront ainsi :
   Overall design and lead developer.
 ```
 
+Ce fichier n'a jamais été tenu à jour. Il ne nomme que l'auteur du plugin Orthanc d'origine et
+le lead developer, et omet le reste de l'équipe — en particulier le designer du projet,
+Jérémy Evrard ([voir plus bas](#un-crédit-manquant-dans-authors)).
+
 Entre le 1er décembre 2015 et le 29 août 2017, il a signé **1 384 commits** dans ce dépôt —
 de très loin la contribution la plus importante — couvrant l'application initiale,
 l'architecture frontend, le backend C++ de traitement d'images, la chaîne de build et de CI,
@@ -42,8 +46,8 @@ Les commits se répartissent sur quatre identités Git utilisées au cours de la
 | **Total** | **1 384** (1 218 hors merges) |
 
 À titre de comparaison, le dépôt compte 2 576 commits accessibles depuis l'ensemble des refs.
-Les contributeurs suivants sont Alain Mazy (~722 toutes identités confondues) et Sébastien
-Jodogne (~240).
+Les contributeurs suivants sont Alain Mazy (~722 toutes identités confondues), Sébastien
+Jodogne (~240) et Jérémy Evrard (89).
 
 Le dépôt lui-même est antérieur à ce travail : son commit racine est `8fddb97`
 (25 février 2015, Sébastien Jodogne, *« initial commit »*), le plugin Orthanc Web Viewer
@@ -223,6 +227,35 @@ Six commits de merge portent explicitement un trailer `Approved-by: Thibault PIR
 d'un grand nombre de merges de branches d'autres membres de l'équipe (`am/…`, `tn/…`) et de
 branches de release — un rôle d'intégrateur et de relecteur, et pas seulement de contributeur
 individuel.
+
+## Un crédit manquant dans AUTHORS
+
+**Jérémy Evrard était le designer du projet, et a mené une refonte complète du viewer.** Le
+fichier `AUTHORS` n'a simplement jamais été mis à jour pour en rendre compte — il s'est arrêté
+à l'auteur du plugin d'origine et au lead developer. Lire ce seul fichier donne donc une image
+trompeuse de qui a construit ce produit.
+
+Son empreinte Git ici est de 89 commits entre le 12 février 2016 et le 18 juillet 2018, sous
+quatre identités (`Jérémy Evrard`, `Evrard Jérémy`, `jeremyOsimis`, toutes sur `je@osimis.io`),
+concentrés sur l'interface :
+
+- **Refonte de la toolbar** — septembre 2017 : `87058ec` et `0c49b01`, regroupement des outils
+  et introduction de grands boutons avec modes d'affichage à plat ou en arborescence, suivis de
+  nouvelles icônes de groupes (`e9ed6fb`).
+- **Layout et affichage des études** — le mode d'affichage `oneCol` (`2b6e3a3`), le bouton de
+  layout du splitpane (`5377783`), les couleurs de bordure de pane par étude (`42bc190`), les
+  options de breadcrumb et de disclaimer (`71d48f7`), la hauteur de la timeline (`c4c13e3`).
+- **Internationalisation** — novembre 2017 : `d17a8ad` (26 fichiers), plus le chargement des
+  locales côté serveur et la configuration de la langue par défaut.
+- **Impression** — juillet 2018 : `054ea03`, `1800f40` et le correctif Edge `62810f0`.
+- **Détails d'interaction** — raccourcis clavier (`e748986`), comportement des tooltips sur
+  appareils tactiles (`a4f7b54`), affichage de l'état des séries dans la liste (`9066481`).
+
+Une réserve mérite d'être posée : le nombre de commits sous-estime la contribution d'un
+designer. Le travail de design — maquettes, itérations, spécifications visuelles — n'atterrit
+en grande partie pas dans un dépôt Git, et une bonne part du CSS qui en résulte a été commitée
+par celui qui l'implémentait. Ces 89 commits sont un plancher de l'implication de Jérémy
+Evrard, pas une mesure de celle-ci.
 
 ## Ce que ce dépôt n'établit *pas*
 

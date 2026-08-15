@@ -22,6 +22,10 @@ JavaScript/AngularJS frontend. Its `AUTHORS` file credits Thibault Piront as:
   Overall design and lead developer.
 ```
 
+That file was never kept up to date. It names only the author of the original Orthanc plugin
+and the lead developer, and omits the rest of the team — in particular the project's designer,
+Jérémy Evrard ([see below](#a-credit-missing-from-authors)).
+
 Between 1 December 2015 and 29 August 2017 he authored **1,384 commits** in this repository —
 by a wide margin the largest contribution — covering the initial application, the frontend
 architecture, the C++ image-processing backend, the build and CI chain, and the project's
@@ -40,7 +44,8 @@ Commits are spread across four Git identities used over the period:
 | **Total** | **1,384** (1,218 excluding merges) |
 
 For scale, the repository holds 2,576 commits reachable from all refs. The next largest
-contributors are Alain Mazy (~722 across his identities) and Sébastien Jodogne (~240).
+contributors are Alain Mazy (~722 across his identities), Sébastien Jodogne (~240) and
+Jérémy Evrard (89).
 
 The repository itself predates this work: its root commit is `8fddb97`
 (25 February 2015, Sébastien Jodogne, *"initial commit"*), the original Orthanc Web Viewer
@@ -215,6 +220,34 @@ Related commits in this repository include `c591ff1` (8 May 2017,
 Six merge commits carry an explicit `Approved-by: Thibault PIRONT` trailer, alongside a large
 number of merges of other team members' branches (`am/…`, `tn/…`) and of release branches —
 a role of integrator and reviewer rather than individual contributor alone.
+
+## A credit missing from AUTHORS
+
+**Jérémy Evrard was the project's designer, and carried out a full redesign of the viewer.**
+The `AUTHORS` file simply was never updated to reflect it — it stopped at the original plugin
+author and the lead developer — so reading that file alone gives a misleading picture of who
+built this product.
+
+His Git footprint here is 89 commits between 12 February 2016 and 18 July 2018, under four
+identities (`Jérémy Evrard`, `Evrard Jérémy`, `jeremyOsimis`, all at `je@osimis.io`),
+concentrated on the interface:
+
+- **Toolbar overhaul** — September 2017: `87058ec` and `0c49b01`, grouping the tools and
+  introducing large buttons with flat or tree display modes, followed by new group icons
+  (`e9ed6fb`).
+- **Layout and study display** — the `oneCol` display mode (`2b6e3a3`), the splitpane layout
+  button (`5377783`), per-study pane border colours (`42bc190`), breadcrumb and disclaimer
+  options (`71d48f7`), timeline height (`c4c13e3`).
+- **Internationalization** — November 2017: `d17a8ad` (26 files) plus the server-side locale
+  loading and default-language configuration.
+- **Print support** — July 2018: `054ea03`, `1800f40` and the Edge fix `62810f0`.
+- **Interaction details** — keyboard shortcuts (`e748986`), tooltip behaviour on touch
+  devices (`a4f7b54`), series-state display in the series list (`9066481`).
+
+A caveat worth stating: commit counts understate a designer's contribution. Design work —
+mockups, iterations, visual specifications — largely does not land in a Git repository, and a
+good deal of the resulting CSS was committed by whoever implemented it. The 89 commits are a
+floor on Jérémy Evrard's involvement, not a measure of it.
 
 ## What this repository does *not* establish
 
